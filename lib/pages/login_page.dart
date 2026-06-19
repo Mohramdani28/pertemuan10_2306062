@@ -12,11 +12,9 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
 
-  final TextEditingController usernameController =
-      TextEditingController();
+  final TextEditingController usernameController = TextEditingController();
 
-  final TextEditingController passwordController =
-      TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   Future<void> login() async {
     if (!_formKey.currentState!.validate()) {
@@ -26,16 +24,11 @@ class _LoginPageState extends State<LoginPage> {
     final prefs = await SharedPreferences.getInstance();
 
     await prefs.setBool("isLogin", true);
-    await prefs.setString(
-      "username",
-      usernameController.text.trim(),
-    );
+    await prefs.setString("username", usernameController.text.trim());
 
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(
-        builder: (_) => const HomePage(),
-      ),
+      MaterialPageRoute(builder: (_) => const HomePage()),
     );
   }
 
@@ -80,13 +73,11 @@ class _LoginPageState extends State<LoginPage> {
                         labelText: "Username",
                         prefixIcon: const Icon(Icons.person),
                         border: OutlineInputBorder(
-                          borderRadius:
-                              BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(10),
                         ),
                       ),
                       validator: (value) {
-                        if (value == null ||
-                            value.trim().isEmpty) {
+                        if (value == null || value.trim().isEmpty) {
                           return "Username tidak boleh kosong";
                         }
                         return null;
@@ -103,13 +94,11 @@ class _LoginPageState extends State<LoginPage> {
                         labelText: "Password",
                         prefixIcon: const Icon(Icons.lock),
                         border: OutlineInputBorder(
-                          borderRadius:
-                              BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(10),
                         ),
                       ),
                       validator: (value) {
-                        if (value == null ||
-                            value.trim().isEmpty) {
+                        if (value == null || value.trim().isEmpty) {
                           return "Password tidak boleh kosong";
                         }
 
@@ -129,20 +118,19 @@ class _LoginPageState extends State<LoginPage> {
                       child: ElevatedButton(
                         onPressed: login,
                         style: ElevatedButton.styleFrom(
-                          backgroundColor:
-                              const Color.fromARGB(
-                                  255, 99, 128, 225),
+                          backgroundColor: const Color.fromARGB(
+                            255,
+                            99,
+                            128,
+                            225,
+                          ),
                           shape: RoundedRectangleBorder(
-                            borderRadius:
-                                BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(10),
                           ),
                         ),
                         child: const Text(
                           "Login",
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.white,
-                          ),
+                          style: TextStyle(fontSize: 16, color: Colors.white),
                         ),
                       ),
                     ),
